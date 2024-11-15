@@ -9,9 +9,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float chaseRadius = 10f;
     [SerializeField] float maxDistance = 50f;
+    [SerializeField] float attackDistance = 5f;
 
     [SerializeField] private Vector3 originalPosition;
+    [SerializeField] Animator animator;
+
     
+    private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,13 @@ public class Enemy : MonoBehaviour
         {
             agent.SetDestination(target.position);
         }
+
+        if (distance <= attackDistance && isAttacking == false)
+        {
+            isAttacking = true;
+            animator.SetTrigger("Attack");
+            agent.isStopped = true;
+        }
         
         // khoan cach giua player va enemy qua xa
 
@@ -44,5 +55,17 @@ public class Enemy : MonoBehaviour
             agent.SetDestination(originalPosition);
         }
         
+        
+        float speed = agent.velocity.magnitude;
+        animator.SetFloat("Speed", speed);  
+        Debug.Log(speed);
+    }
+
+
+    public void EndAttack()
+    {
+        animator.SetTrigger("EndAttack");
+        isAttacking = false;
+        agent.isStopped = false;
     }
 }
