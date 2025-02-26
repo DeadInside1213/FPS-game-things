@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+    
+    [SerializeField] private AudioClip atkSound;
+    [SerializeField] private AudioClip runSound;
+    [SerializeField] private AudioClip deadSound;
+    
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] Transform target;
     [SerializeField] float chaseRadius = 10f;
@@ -13,18 +20,23 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Vector3 originalPosition;
     [SerializeField] Animator animator;
-
+    [SerializeField] Missionmanager missionmanager;
     
+    public int maxHP, curHP;
+    public AttackZone atkZone;
     private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
     {
+        curHP = maxHP;
         originalPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        if (currentState == EnemyState.Dead) return;
         // khoan cach tu vi tri hen tai den vi tri ban dau cua enemy
         var chasedDistance = Vector3.Distance(transform.position, originalPosition);
         
@@ -33,12 +45,14 @@ public class Enemy : MonoBehaviour
         if (distance <= chaseRadius)
         {
             agent.SetDestination(target.position);
+            //audioSource.PlayOneShot(runSound);
         }
 
         if (distance <= attackDistance && isAttacking == false)
         {
             isAttacking = true;
             animator.SetTrigger("Attack");
+            audioSource.PlayOneShot(atkSound);
             agent.isStopped = true;
         }
         
@@ -58,9 +72,15 @@ public class Enemy : MonoBehaviour
         
         float speed = agent.velocity.magnitude;
         animator.SetFloat("Speed", speed);  
-        Debug.Log(speed);
+        //Debug.Log(speed);
     }
-
+    
+    public enum EnemyState
+    {
+        Normal, Attack, Dead
+    }
+    
+    public EnemyState currentState;
 
     public void EndAttack()
     {
@@ -68,4 +88,57 @@ public class Enemy : MonoBehaviour
         isAttacking = false;
         agent.isStopped = false;
     }
+
+    public void ChangeState(EnemyState newState)
+    {
+        switch (currentState)
+        {
+            case EnemyState.Normal: break;
+            case EnemyState.Attack: break;
+            case EnemyState.Dead: break;
+        }
+
+        switch (newState)
+        {
+            case EnemyState.Normal: break;
+            case EnemyState.Attack: break;
+            case EnemyState.Dead: 
+                
+                animator.SetTrigger("Dead");
+                audioSource.PlayOneShot(deadSound);
+                Destroy(gameObject, 2f); 
+                
+                break;
+        }
+   
+        currentState = newState;
+    }
+
+    public void OnDestroy()
+    {
+        missionmanager.UpdateMission();
+    }
+    
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+        curHP = Mathf.Max(0, curHP);
+        if (curHP <= 0)
+        {
+            ChangeState(EnemyState.Dead);
+        }
+    }
+    
+    public void BeginDamage()
+    {
+        atkZone.beginDamage();
+    }
+
+    public void EndDamage()
+    {
+        atkZone.endDamage();
+    }
+    
+    
 }
+

@@ -13,6 +13,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DeadInside1213&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DeadInside1213/FPS-game-things.git&quot;,
+    &quot;accountId&quot;: &quot;85cfcc85-fca0-4677-9711-b01d9248a12b&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../Assignment3D_Nhom3/Assets/Script/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/AttackZone.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Mission manager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/NPC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerLook.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -22,19 +42,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "<unknown>",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;&lt;unknown&gt;&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;power.mode3.zeranthium&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\APP\Unity\Unity Editor\6000.0.26f1\Editor\Unity.exe" />
@@ -88,7 +109,30 @@
       <option name="presentableId" value="Default" />
       <updated>1731666450082</updated>
       <workItem from="1731666451750" duration="10000" />
-      <workItem from="1731666644388" duration="2474000" />
+      <workItem from="1731666644388" duration="2705000" />
+      <workItem from="1731926776487" duration="743000" />
+      <workItem from="1731928233273" duration="941000" />
+      <workItem from="1732096264220" duration="4712000" />
+      <workItem from="1732269890072" duration="696000" />
+      <workItem from="1732270703860" duration="2467000" />
+      <workItem from="1732517751988" duration="1243000" />
+      <workItem from="1732527634395" duration="6277000" />
+      <workItem from="1732701247281" duration="1010000" />
+      <workItem from="1732873836538" duration="1000" />
+      <workItem from="1732874586695" duration="1238000" />
+      <workItem from="1736252361062" duration="718000" />
+      <workItem from="1736424943198" duration="2216000" />
+      <workItem from="1736493338074" duration="108000" />
+      <workItem from="1736493473231" duration="600000" />
+      <workItem from="1736494103028" duration="1466000" />
+      <workItem from="1736495804500" duration="677000" />
+      <workItem from="1736597255562" duration="1946000" />
+      <workItem from="1736857152298" duration="51000" />
+      <workItem from="1736857231838" duration="1962000" />
+      <workItem from="1739016248083" duration="4050000" />
+      <workItem from="1739173503721" duration="928000" />
+      <workItem from="1739450679742" duration="1095000" />
+      <workItem from="1740053818175" duration="3288000" />
     </task>
     <servers />
   </component>

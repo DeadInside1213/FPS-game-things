@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource audioSource;
+    
+    [SerializeField] private AudioClip atkSound;
+    [SerializeField] private AudioClip runSound;
+    [SerializeField] private AudioClip deadSound;
     
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -14,9 +19,14 @@ public class PlayerMotor : MonoBehaviour
     
     public float jumpHeight = 1f;
     
+    public int maxHP, curHP;
+    
+    public AttackZone atkZone;
+    
     // Start is called before the first frame update
     void Start()
     {
+        curHP = maxHP;
         controller = GetComponent<CharacterController>();
     }
 
@@ -24,6 +34,7 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+        
     }
     // Receive the in put from InputManager.cs and apply to character controller.
     public void ProcessMove(Vector2 input)
@@ -32,12 +43,13 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
-        animator.SetFloat("Run", controller.velocity.magnitude);
+        //audioSource.PlayOneShot(runSound);
+        //animator.SetFloat("Run", controller.velocity.magnitude);
         playerVelocity.y += gravity * 1.5f * Time.deltaTime;
         if (controller.isGrounded && playerVelocity.y < 0) playerVelocity.y = -2f;   
         controller.Move(playerVelocity * Time.deltaTime);
        
-        Debug.Log(playerVelocity.y);
+        //Debug.Log(playerVelocity.y);
         
     }
     
@@ -46,7 +58,37 @@ public class PlayerMotor : MonoBehaviour
     {
         if (isGrounded)
         {
+            audioSource.PlayOneShot(atkSound);
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3f  * gravity);
+        }
+    }
+
+    public void ProcessAttack()
+    {
+        animator.SetTrigger("Attack");
+        audioSource.PlayOneShot(atkSound);
+    }
+
+
+    public void BeginDamage()
+    {
+        atkZone.beginDamage();
+    }
+
+    public void EndDamage()
+    {
+        atkZone.endDamage();
+    }
+    
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+        curHP = Mathf.Max(0, curHP);
+        if (curHP <= 0)
+        {
+            animator.SetTrigger("Dead");
+            audioSource.PlayOneShot(deadSound);
+            Destroy(gameObject, 2f); 
         }
     }
 }
